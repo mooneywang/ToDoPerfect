@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  TodoCardView.swift
 //  ToDoPerfect
 //
 //  Created by 王梦杰 on 2020/7/24.
@@ -8,14 +8,14 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct TodoCardView: View {
     var body: some View {
-        TodoCardView()
+        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct TodoCardView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        TodoCardView()
     }
 }
