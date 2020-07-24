@@ -10,7 +10,15 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        TodoCardView()
+        NavigationView {
+            ScrollView(.vertical, showsIndicators: true) {
+                VStack {
+                    ForEach(0..<15) { item in
+                        TodoCardView()
+                    }
+                }.padding()
+            }.navigationBarTitle(Text("任务列表"), displayMode: .large)
+        }
     }
 }
 

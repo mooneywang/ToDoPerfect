@@ -9,8 +9,31 @@
 import SwiftUI
 
 struct TodoCardView: View {
+    
+    @State var isChecked: Bool = false
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            Rectangle()
+                .frame(width: 10)
+                .foregroundColor(.blue)
+            VStack(alignment: .leading, spacing: 8) {
+                Text("Hello")
+                Text("2020.09.01")
+            }
+            Spacer()
+            Image(systemName: self.isChecked ? "checkmark.square" : "square")
+                .font(.title)
+                .foregroundColor(.blue)
+                .padding(.trailing)
+                .onTapGesture {
+                    self.isChecked.toggle()
+            }
+        }
+        .frame(height: 80)
+        .background(Color.yellow)
+        .cornerRadius(10)
+        .shadow(color: .gray, radius: 10, x: 5, y: 10)
     }
 }
 
