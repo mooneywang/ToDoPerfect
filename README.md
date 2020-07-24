@@ -1,2 +1,2 @@
 # ToDoPerfect
-A perfect todo list app
+A perfect todo list app written in SwiftUI
