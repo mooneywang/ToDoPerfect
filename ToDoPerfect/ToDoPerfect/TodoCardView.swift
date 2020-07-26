@@ -10,7 +10,8 @@ import SwiftUI
 
 struct TodoCardView: View {
     
-    @State var isChecked: Bool = false
+    @EnvironmentObject var todo: ToDo
+    var index: Int = 0
     
     var body: some View {
         HStack {
@@ -18,16 +19,16 @@ struct TodoCardView: View {
                 .frame(width: 10)
                 .foregroundColor(.blue)
             VStack(alignment: .leading, spacing: 8) {
-                Text("Hello")
-                Text("2020.09.01")
+                Text(self.todo.todoList[index].title)
+                Text(self.todo.todoList[index].duedate)
             }
             Spacer()
-            Image(systemName: self.isChecked ? "checkmark.square" : "square")
+            Image(systemName: self.todo.todoList[index].isChecked ? "checkmark.square" : "square")
                 .font(.title)
                 .foregroundColor(.blue)
                 .padding(.trailing)
                 .onTapGesture {
-                    self.isChecked.toggle()
+                    self.todo.check(id: self.index)
             }
         }
         .frame(height: 80)
