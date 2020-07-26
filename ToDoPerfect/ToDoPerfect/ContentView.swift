@@ -9,8 +9,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var todo: ToDo = ToDo(data: [ToDoData(title: "写作业", duedate: "20200901"),
-                                                 ToDoData(title: "复习", duedate: "20200902")])
+    @ObservedObject var todo: ToDo = ToDo(data: [ToDoData(title: "写作业", duedate: Date()),
+                                                 ToDoData(title: "复习", duedate: Date())])
     
     @State var showEditingPage: Bool = false
     

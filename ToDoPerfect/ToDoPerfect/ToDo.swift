@@ -33,5 +33,22 @@ class ToDo: ObservableObject {
     func add(data: ToDoData) {
         self.todoList.append(ToDoData(title: data.title, duedate: data.duedate, id: count))
         count += 1
+        self.sort()
+    }
+    
+    func edit(id: Int, data: ToDoData) {
+        self.todoList[id].title = data.title
+        self.todoList[id].duedate = data.duedate
+        self.todoList[id].isChecked = false
+        self.sort()
+    }
+    
+    func sort() {
+        self.todoList.sort { (data1, data2) -> Bool in
+            return data1.duedate.timeIntervalSince1970 < data2.duedate.timeIntervalSince1970
+        }
+        for i in 0..<self.todoList.count {
+            self.todoList[i].id = i
+        }
     }
 }

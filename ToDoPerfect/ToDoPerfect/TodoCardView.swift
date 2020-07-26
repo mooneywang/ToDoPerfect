@@ -11,18 +11,32 @@ import SwiftUI
 struct TodoCardView: View {
     
     @EnvironmentObject var todo: ToDo
+    @State var showEditingPage: Bool = false
     var index: Int = 0
     
     var body: some View {
         HStack {
-            Rectangle()
-                .frame(width: 10)
-                .foregroundColor(.blue)
-            VStack(alignment: .leading, spacing: 8) {
-                Text(self.todo.todoList[index].title)
-                Text(self.todo.todoList[index].duedate)
+            Button(action: {
+                self.showEditingPage = true
+            }) {
+                Group {
+                    Rectangle()
+                        .frame(width: 10)
+                        .foregroundColor(.blue)
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text(self.todo.todoList[index].title)
+                        Text(self.todo.todoList[index].duedate.description)
+                    }
+                    Spacer()
+                }
             }
-            Spacer()
+            .sheet(isPresented: self.$showEditingPage) {
+                ToDoEditingPage(title: self.todo.todoList[self.index].title,
+                                duedate: self.todo.todoList[self.index].duedate,
+                                id: self.index)
+                    .environmentObject(self.todo)
+            }
+            
             Image(systemName: self.todo.todoList[index].isChecked ? "checkmark.square" : "square")
                 .font(.title)
                 .foregroundColor(.blue)

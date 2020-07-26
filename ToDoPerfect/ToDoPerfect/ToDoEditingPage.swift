@@ -15,6 +15,8 @@ struct ToDoEditingPage: View {
     @State var title: String = ""
     @State var duedate: Date = Date()
     
+    var id: Int?
+    
     var body: some View {
         NavigationView {
             Form {
@@ -26,7 +28,11 @@ struct ToDoEditingPage: View {
                 }
                 Section {
                     Button(action: {
-                        self.todo.add(data: ToDoData(title: self.title, duedate: self.duedate.description))
+                        if self.id == nil {
+                            self.todo.add(data: ToDoData(title: self.title, duedate: self.duedate))
+                        } else {
+                            self.todo.edit(id: self.id!, data: ToDoData(title: self.title, duedate: self.duedate))
+                        }
                         self.presentation.wrappedValue.dismiss()
                     }) {
                         Text("确认")

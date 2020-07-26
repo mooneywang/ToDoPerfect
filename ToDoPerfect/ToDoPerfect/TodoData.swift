@@ -10,7 +10,7 @@ import Foundation
 
 struct ToDoData: Identifiable {
     var title: String = ""
-    var duedate: String = ""
+    var duedate: Date = Date()
     var isChecked: Bool = false
     
     var id: Int = 0
